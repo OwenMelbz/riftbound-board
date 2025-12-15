@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx create-next-app:*)",
+      "Bash(npx create-next-app@latest . --typescript --tailwind --eslint --app --no-src-dir --import-alias \"@/*\" --use-npm --yes)",
+      "Bash(npm install:*)",
+      "Bash(npx tsc:*)",
+      "Bash(npx shadcn@latest add drawer:*)",
+      "Bash(npx shadcn@latest add context-menu)",
+      "Bash(sqlite3:*)",
+      "Bash(npx shadcn@latest add sonner:*)",
+      "Bash(curl:*)",
+      "Bash(ls:*)",
+      "Bash(grep:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
