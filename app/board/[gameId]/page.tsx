@@ -145,6 +145,52 @@ export default function BoardPage() {
     },
   });
 
+  // Ready all exhausted cards for current player (runes, legend, base, battlefield)
+  const handleReadyAll = useCallback(async () => {
+    const boardState = currentPlayer === "red" ? redBoardState : blueBoardState;
+
+    // Get all exhausted cards from relevant zones (only cards owned by current player)
+    const exhaustedCards = [
+      ...boardState.zones.runes.filter(c => c.isExhausted),
+      ...boardState.zones.legend.filter(c => c.isExhausted),
+      ...boardState.zones.champion.filter(c => c.isExhausted),
+      ...boardState.zones.base.filter(c => c.isExhausted),
+      ...boardState.zones.battlefield.filter(c => c.isExhausted && c.playerSide === currentPlayer),
+    ];
+
+    if (exhaustedCards.length === 0) return;
+
+    // Unexhaust each card
+    for (const card of exhaustedCards) {
+      await fetch(`/api/games/${gameId}/exhaust-card`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ cardInstanceId: card.cardInstanceId }),
+      });
+    }
+
+    toast.success(`Readied ${exhaustedCards.length} card${exhaustedCards.length > 1 ? "s" : ""}`);
+    fetchBoardState();
+  }, [gameId, currentPlayer, redBoardState, blueBoardState, fetchBoardState]);
+
+  // Global keyboard shortcut: Shift+R to ready all cards
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      // Ignore if a drawer/dialog is open
+      if (document.querySelector('[data-vaul-drawer]') || document.querySelector('[role="dialog"]')) {
+        return;
+      }
+      // Shift+R to ready all cards
+      if (e.shiftKey && (e.key === "r" || e.key === "R")) {
+        e.preventDefault();
+        handleReadyAll();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [handleReadyAll]);
+
   const handleMoveCard = useCallback(
     async (
       cardInstanceId: string,
