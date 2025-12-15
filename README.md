@@ -108,6 +108,12 @@ ngrok http 3000
 
 Share the generated URL with your friend. One of you plays as Red, the other as Blue.
 
-## License
+## License & Usage
 
-MIT
+This project is for **educational and personal use only**.
+
+- You may use this software for your own non-commercial, private enjoyment
+- You may not resell, redistribute, or reproduce this software for commercial purposes
+- This is an unofficial fan project and is not affiliated with or endorsed by the creators of Riftbound TCG
+
+All card data, images, and game mechanics remain the property of their respective owners.
