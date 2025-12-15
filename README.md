@@ -22,8 +22,8 @@ A digital playing surface for the Riftbound trading card game. This is not a gam
 ### 1. Clone and install dependencies
 
 ```bash
-git clone <repo-url>
-cd cards
+git clone <repo-url> riftbound-board
+cd riftbound-board
 npm install
 ```
 
