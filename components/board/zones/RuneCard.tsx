@@ -33,14 +33,17 @@ export function RuneCard({
       }
       if ((e.key === "e" || e.key === "E") && onExhaust) {
         e.preventDefault();
+        setIsHovered(false);
         onExhaust(cardInstance);
       }
       if ((e.key === "r" || e.key === "R") && onRecycle) {
         e.preventDefault();
+        setIsHovered(false);
         setShowRecycleConfirm(true);
       }
       if (e.key === " " && onViewDetails) {
         e.preventDefault();
+        setIsHovered(false);
         onViewDetails(cardInstance);
       }
     };

@@ -25,6 +25,7 @@ export function LegendCard({
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "e" || e.key === "E") {
         e.preventDefault();
+        setIsHovered(false);
         onExhaust(cardInstance);
       }
     };

@@ -20,7 +20,7 @@ interface CardProps {
 
 const sizeClasses = {
   xs: "w-[77px]",   // 77x108 - battlefield
-  sm: "w-[94px]",   // 94x132 - rune size
+  sm: "w-[100px]",  // 100px - hand cards
   md: "w-[120px]",  // 120x168 - standard
   lg: "w-[180px]",  // 180x252 - large (50% bigger than md)
 };

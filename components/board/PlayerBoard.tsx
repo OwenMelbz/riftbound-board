@@ -331,7 +331,7 @@ export function PlayerBoard({
                   className="flex-shrink-0"
                   style={isInverted ? { transform: "rotate(180deg)" } : undefined}
                 >
-                  <div className="w-[120px] card-aspect rounded-lg overflow-hidden">
+                  <div className="w-[100px] card-aspect rounded-lg overflow-hidden">
                     <img
                       src="/card-back.png"
                       alt="Card back"

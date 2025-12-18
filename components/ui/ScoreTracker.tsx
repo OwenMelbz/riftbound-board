@@ -17,9 +17,9 @@ export function ScoreTracker({
 }: ScoreTrackerProps) {
   const handleClick = (side: "red" | "blue") => {
     if (side === "red") {
-      onRedScoreChange(Math.min(9, redScore + 1));
+      onRedScoreChange(Math.min(8, redScore + 1));
     } else {
-      onBlueScoreChange(Math.min(9, blueScore + 1));
+      onBlueScoreChange(Math.min(8, blueScore + 1));
     }
   };
 
@@ -41,7 +41,7 @@ export function ScoreTracker({
           w-8 h-8 rounded flex items-center justify-center font-bold text-lg
           ${currentPlayer === "red" ? "bg-red-600" : "bg-red-600/50"}
           hover:bg-red-500 transition-colors cursor-pointer
-          ${redScore >= 9 ? "ring-2 ring-yellow-400" : ""}
+          ${redScore >= 8 ? "ring-2 ring-yellow-400" : ""}
         `}
         title="Left-click: +1, Right-click: -1"
       >
@@ -55,7 +55,7 @@ export function ScoreTracker({
           w-8 h-8 rounded flex items-center justify-center font-bold text-lg
           ${currentPlayer === "blue" ? "bg-blue-600" : "bg-blue-600/50"}
           hover:bg-blue-500 transition-colors cursor-pointer
-          ${blueScore >= 9 ? "ring-2 ring-yellow-400" : ""}
+          ${blueScore >= 8 ? "ring-2 ring-yellow-400" : ""}
         `}
         title="Left-click: +1, Right-click: -1"
       >

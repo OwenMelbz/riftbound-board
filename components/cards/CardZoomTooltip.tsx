@@ -21,13 +21,13 @@ export function CardZoomProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Control" || e.key === "Meta") {
+      if (e.key === "Control" || e.key === "Meta" || e.key === "Alt") {
         setModifierPressed(true);
       }
     };
 
     const handleKeyUp = (e: KeyboardEvent) => {
-      if (e.key === "Control" || e.key === "Meta") {
+      if (e.key === "Control" || e.key === "Meta" || e.key === "Alt") {
         setModifierPressed(false);
       }
     };

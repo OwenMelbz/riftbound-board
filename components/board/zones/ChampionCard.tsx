@@ -54,21 +54,25 @@ export function ChampionCard({
       // E key to exhaust/ready (only when locked)
       if ((e.key === "e" || e.key === "E") && onExhaust && effectivelyLocked && currentChampion) {
         e.preventDefault();
+        setIsHovered(false);
         onExhaust(currentChampion);
       }
       // S key to cycle champions (only if not locked and multiple champions)
       if ((e.key === "s" || e.key === "S") && onNextChampion && !isLocked && hasMultipleChampions) {
         e.preventDefault();
+        setIsHovered(false);
         onNextChampion();
       }
       // L key to lock champion (only if not locked and multiple champions)
       if ((e.key === "l" || e.key === "L") && onLockChampion && !isLocked && hasMultipleChampions) {
         e.preventDefault();
+        setIsHovered(false);
         onLockChampion();
       }
       // D key to play champion
       if ((e.key === "d" || e.key === "D") && onPlayChampion) {
         e.preventDefault();
+        setIsHovered(false);
         onPlayChampion();
       }
     };

@@ -5,6 +5,7 @@ import { DndContext, DragEndEvent, DragOverlay, DragStartEvent } from "@dnd-kit/
 import { PlayerBoard } from "./PlayerBoard";
 import { BattlefieldZone } from "./BattlefieldZone";
 import { Card, CardDetailDrawer, CardZoomProvider } from "@/components/cards";
+import { useBoardPerspective } from "@/hooks/useBoardPerspective";
 import type { BoardState, CardInstance, ZoneType } from "@/lib/types";
 import type { PlayerSide } from "@/lib/types/deck";
 
@@ -102,6 +103,9 @@ export function GameBoard({
 }: GameBoardProps) {
   const [selectedCard, setSelectedCard] = useState<CardInstance | null>(null);
   const [draggedCard, setDraggedCard] = useState<CardInstance | null>(null);
+
+  // Board perspective (3D tilt with middle mouse)
+  const { perspectiveStyle, handleMouseDown, resetPerspective, isAdjusting } = useBoardPerspective();
 
   // Champion state per player
   const [redChampionIndex, setRedChampionIndex] = useState(0);
@@ -337,7 +341,12 @@ export function GameBoard({
   return (
     <CardZoomProvider>
       <DndContext onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
-        <div className="flex flex-col gap-4 p-4 min-h-screen">
+        <div
+          className={`flex flex-col gap-4 p-4 min-h-screen ${isAdjusting ? "cursor-grabbing" : ""}`}
+          style={perspectiveStyle}
+          onMouseDown={handleMouseDown}
+          onDoubleClick={resetPerspective}
+        >
           {/* Opponent's Board - no actions except viewing cards */}
           <PlayerBoard
             playerSide={opponent}

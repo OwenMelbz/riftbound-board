@@ -44,18 +44,22 @@ export function HandCard({
       }
       if (e.key === " " && onViewDetails) {
         e.preventDefault();
+        setIsHovered(false);
         onViewDetails(cardInstance);
       }
       if ((e.key === "p" || e.key === "P") && onPlay) {
         e.preventDefault();
+        setIsHovered(false);
         onPlay(cardInstance);
       }
       if ((e.key === "t" || e.key === "T") && onTrash) {
         e.preventDefault();
+        setIsHovered(false);
         onTrash(cardInstance);
       }
       if ((e.key === "r" || e.key === "R") && onRecycle) {
         e.preventDefault();
+        setIsHovered(false);
         setShowRecycleConfirm(true);
       }
     };

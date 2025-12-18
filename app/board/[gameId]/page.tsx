@@ -173,10 +173,18 @@ export default function BoardPage() {
     fetchBoardState();
   }, [gameId, currentPlayer, redBoardState, blueBoardState, fetchBoardState]);
 
-  // Global keyboard shortcut: Shift+R to ready all cards
+  // Global keyboard shortcuts
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      // Ignore if a drawer/dialog is open
+      // Prevent spacebar from scrolling the page
+      if (e.key === " " && e.target === document.body) {
+        e.preventDefault();
+      }
+      // Prevent Alt from focusing browser chrome
+      if (e.key === "Alt") {
+        e.preventDefault();
+      }
+      // Ignore other shortcuts if a drawer/dialog is open
       if (document.querySelector('[data-vaul-drawer]') || document.querySelector('[role="dialog"]')) {
         return;
       }

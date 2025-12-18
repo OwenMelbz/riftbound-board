@@ -51,25 +51,30 @@ export function BaseCard({
       }
       if ((e.key === "e" || e.key === "E") && onExhaust && canExhaust) {
         e.preventDefault();
+        setIsHovered(false);
         onExhaust(cardInstance);
       }
       if ((e.key === "f" || e.key === "F") && onFlip) {
         e.preventDefault();
+        setIsHovered(false);
         onFlip(cardInstance);
       }
       // Only allow viewing details if card is face up OR viewer is the owner
       if (e.key === " " && onViewDetails && (cardInstance.isFaceUp || isOwner)) {
         e.preventDefault();
+        setIsHovered(false);
         onViewDetails(cardInstance);
       }
       // Pickup (return to hand) with H key
       if ((e.key === "h" || e.key === "H") && onPickup) {
         e.preventDefault();
+        setIsHovered(false);
         onPickup(cardInstance);
       }
       // Trash with T key
       if ((e.key === "t" || e.key === "T") && onTrash) {
         e.preventDefault();
+        setIsHovered(false);
         onTrash(cardInstance);
       }
     };
