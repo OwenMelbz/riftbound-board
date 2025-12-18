@@ -42,6 +42,10 @@ export function HandCard({
       if (document.querySelector('[data-vaul-drawer]') || document.querySelector('[role="dialog"]')) {
         return;
       }
+      // Ignore if any modifier key is pressed
+      if (e.ctrlKey || e.metaKey || e.altKey || e.shiftKey) {
+        return;
+      }
       if (e.key === " " && onViewDetails) {
         e.preventDefault();
         setIsHovered(false);

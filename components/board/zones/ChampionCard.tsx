@@ -51,6 +51,10 @@ export function ChampionCard({
       if (document.querySelector('[data-vaul-drawer]') || document.querySelector('[role="dialog"]')) {
         return;
       }
+      // Ignore if any modifier key is pressed
+      if (e.ctrlKey || e.metaKey || e.altKey || e.shiftKey) {
+        return;
+      }
       // E key to exhaust/ready (only when locked)
       if ((e.key === "e" || e.key === "E") && onExhaust && effectivelyLocked && currentChampion) {
         e.preventDefault();

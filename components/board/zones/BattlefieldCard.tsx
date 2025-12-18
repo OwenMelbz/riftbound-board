@@ -56,6 +56,10 @@ export function BattlefieldCard({
       if (document.querySelector('[data-vaul-drawer]') || document.querySelector('[role="dialog"]')) {
         return;
       }
+      // Ignore if any modifier key is pressed
+      if (e.ctrlKey || e.metaKey || e.altKey || e.shiftKey) {
+        return;
+      }
       if ((e.key === "e" || e.key === "E") && onExhaust && canExhaust) {
         e.preventDefault();
         setIsHovered(false);

@@ -23,6 +23,10 @@ export function LegendCard({
     if (!isHovered || !onExhaust) return;
 
     const handleKeyDown = (e: KeyboardEvent) => {
+      // Ignore if any modifier key is pressed
+      if (e.ctrlKey || e.metaKey || e.altKey || e.shiftKey) {
+        return;
+      }
       if (e.key === "e" || e.key === "E") {
         e.preventDefault();
         setIsHovered(false);
